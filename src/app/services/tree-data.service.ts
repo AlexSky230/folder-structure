@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NodeModel } from '../models/node.model';
 import { BehaviorSubject } from 'rxjs';
 import { ENodeType } from '../enums/node-type.enum';
+import { NodeModel } from '../models/node.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,78 +11,7 @@ export class TreeDataService {
     name: 'root',
     type: ENodeType.Folder,
     id: 'root',
-    children: [
-      {
-        type: ENodeType.Folder,
-        name: 'ghjg',
-        children: [],
-        id: '1716650259334',
-      },
-      {
-        type: ENodeType.Folder,
-        name: 'gfjghj',
-        children: [
-          {
-            type: ENodeType.Folder,
-            name: 'ghjghj',
-            children: [
-              {
-                type: ENodeType.Folder,
-                name: 'ffff',
-                children: [],
-                id: '1716650250329',
-              },
-              {
-                type: ENodeType.Folder,
-                name: 'ghjgh',
-                children: [
-                  {
-                    type: ENodeType.Folder,
-                    name: 'ggg',
-                    children: [],
-                    id: '1716650254657',
-                  },
-                ],
-                id: '1716650247633',
-              },
-              {
-                type: ENodeType.Folder,
-                name: 'ghjg',
-                children: [],
-                id: '1716650243823',
-              },
-            ],
-            id: '1716650236908',
-          },
-          {
-            type: ENodeType.File,
-            name: 'ghjgh',
-            children: [],
-            id: '1716650233916',
-          },
-          {
-            type: ENodeType.Folder,
-            name: 'ghjgh',
-            children: [],
-            id: '1716650231382',
-          },
-          {
-            type: ENodeType.Folder,
-            name: 'fghjg',
-            children: [
-              {
-                type: ENodeType.Folder,
-                name: 'ghjg',
-                children: [],
-                id: '1716650228984',
-              },
-            ],
-            id: '1716650225959',
-          },
-        ],
-        id: '1716650223697',
-      },
-    ],
+    children: [],
   });
 
   readonly treeData$ = this.treeDataSource$.asObservable();

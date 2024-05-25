@@ -1,16 +1,8 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ENodeType } from 'src/app/enums/node-type.enum';
 import { NodeModel } from 'src/app/models/node.model';
 import { NodeCreateService } from 'src/app/services/node-create.service';
-import { TreeDataService } from 'src/app/services/tree-data.service';
 
 @Component({
   selector: 'app-create-node',

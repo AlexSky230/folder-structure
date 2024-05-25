@@ -13,7 +13,10 @@ export class RootFolderComponent implements OnInit {
   activeNodeId$: Observable<string>;
   rootNode$ = this.treeDataService.treeData$;
 
-  constructor(private treeDataService: TreeDataService, private nodeCreateService: NodeCreateService) {}
+  constructor(
+    private treeDataService: TreeDataService,
+    private nodeCreateService: NodeCreateService
+  ) {}
 
   ngOnInit(): void {
     this.activeNodeId$ = this.nodeCreateService.activeNodeId$;
