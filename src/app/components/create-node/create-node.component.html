@@ -1,0 +1,35 @@
+<ng-container *ngIf="(activeNodeId$ | async) === nodeId">
+  <div *ngIf="!type.value" class="type-container">
+    <button mat-button color="primary" (click)="setType(nodeTypes.Folder)">
+      Folder
+    </button>
+    <button mat-button color="primary" (click)="setType(nodeTypes.File)">
+      File
+    </button>
+  </div>
+
+  <form *ngIf="type.value" [formGroup]="form" class="action-container">
+    <div class="action-container-image">
+      <img
+        *ngIf="type.value === nodeTypes.Folder"
+        src="../../../assets/images/folder-open-regular.svg"
+        alt="Image of folder"
+      />
+      <img
+        *ngIf="type.value === nodeTypes.File"
+        src="../../../assets/images/file-regular.svg"
+        alt="Image of file"
+      />
+    </div>
+
+    <input class="action-container-input" type="text" formControlName="name" />
+
+    <button mat-button color="primary" (click)="createNode()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button mat-button color="warn" (click)="close()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </form>
+</ng-container>

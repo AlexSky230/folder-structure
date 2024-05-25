@@ -1,0 +1,16 @@
+<div
+  class="file"
+>
+  <div class="file-image">
+    <img src="../../../assets/images/file-regular.svg" alt="File icon" />
+  </div>
+
+  <span>{{ node.name }}</span>
+
+  <app-node-controls
+    class="file-controls"
+    [nodeId]="node.id"
+    [parentNode]="parentNode"
+    [nodeType]="node.type"
+  ></app-node-controls>
+</div>

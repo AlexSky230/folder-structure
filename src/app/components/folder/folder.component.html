@@ -1,0 +1,45 @@
+<div class="node">
+  <div
+    class="node-container"
+    [ngClass]="{ 'node-container-child': parentNode.id !== 'root' }"
+  >
+
+    <div class="node-container-image">
+      <img
+        src="../../../assets/images/folder-open-regular.svg"
+        alt="Folder icon"
+      />
+    </div>
+
+    <span>{{ node.name }}</span>
+
+    <app-node-controls
+      class="node-container-controls"
+      [nodeId]="node.id"
+      [parentNode]="parentNode"
+    ></app-node-controls>
+  </div>
+
+  <app-create-node
+    [nodeId]="node.id"
+    (create)="addNewNode($event, node)"
+  >
+  </app-create-node>
+
+  <div *ngIf="node.children?.length" class="node-children">
+    <div *ngFor="let child of node.children" class="node-children-child">
+      <app-folder
+        *ngIf="child.type === nodeTypes.Folder"
+        [parentNode]="node"
+        [node]="child"
+        [ngClass]="{ 'node-container-child': parentNode.id !== 'root' }"
+      ></app-folder>
+
+      <app-file
+        *ngIf="child.type === nodeTypes.File"
+        [parentNode]="node"
+        [node]="child"
+      ></app-file>
+    </div>
+  </div>
+</div>

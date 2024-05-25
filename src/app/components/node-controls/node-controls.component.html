@@ -1,0 +1,20 @@
+<div *ngIf="parentNode && nodeId" class="controls">
+  <button
+    *ngIf="nodeType !== nodeTypes.File"
+    (click)="setActiveNodeId(nodeId)"
+    mat-button
+    color="primary"
+    aria-label="Add icon"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <button
+    (click)="deleteNode(parentNode, nodeId)"
+    mat-button
+    color="warn"
+    aria-label="Delete icon"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

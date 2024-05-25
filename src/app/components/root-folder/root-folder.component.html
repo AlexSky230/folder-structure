@@ -1,0 +1,23 @@
+<div *ngIf="rootNode$ | async as rootNode" class="container">
+  <button
+    class="container-add-button"
+    mat-flat-button
+    color="primary"
+    (click)="setActiveNodeId(rootNode.id)"
+  >
+    Add folder to root
+  </button>
+
+  <app-create-node
+    [nodeId]="rootNode.id"
+    [isRoot]="true"
+    (create)="addNewNode($event, rootNode)"
+  ></app-create-node>
+
+  <ng-container *ngFor="let child of rootNode.children">
+    <app-folder
+      [parentNode]="rootNode"
+      [node]="child"
+    ></app-folder>
+  </ng-container>
+</div>
