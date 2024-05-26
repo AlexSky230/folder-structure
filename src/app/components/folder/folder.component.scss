@@ -4,7 +4,7 @@
     border: solid transparent 2px;
     display: flex;
     align-items: center;
-    height: 2rem;
+    height: 2.1rem;
 
     &-controls {
       display: none;
@@ -22,10 +22,15 @@
       }
     }
 
+    &:focus {
+      .node-container-controls {
+        display: initial;
+      }
+    }
+
     &:hover {
       span {
         color: #3f51b5;
-        font-weight: 500;
       }
 
       .node-container-controls {

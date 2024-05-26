@@ -15,6 +15,7 @@ export class TreeDataService {
   });
 
   readonly treeData$ = this.treeDataSource$.asObservable();
+
   addChild(newNode: NodeModel, parentNode: NodeModel) {
     parentNode.children.unshift(newNode);
     this.treeDataSource$.next(parentNode);
@@ -43,25 +44,15 @@ export class TreeDataService {
     parentNode.children.unshift(newNode);
   }
 
-  getNode(preNode: Partial<NodeModel>): NodeModel | null {
-    if (!preNode?.name && !preNode?.type) {
-      console.error('Name or Id not provided', preNode);
-      return null;
-    }
-
-    const { name, type } = preNode;
-    return new NodeModel(type, name);
-  }
-
   deleteNode(parentNode: NodeModel, nodeToDeleteId: string): void {
     const index = parentNode.children?.findIndex(
-      (node) => node.id === nodeToDeleteId
+      (node) => node.id === nodeToDeleteId,
     );
     if (index !== -1) {
       parentNode.children.splice(index, 1);
     } else {
       console.error(
-        `Node with ID '${nodeToDeleteId}' not found in parent node.`
+        `Node with ID '${nodeToDeleteId}' not found in parent node.`,
       );
     }
   }

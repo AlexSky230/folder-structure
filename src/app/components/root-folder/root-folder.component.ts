@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { NodeModel } from 'src/app/models/node.model';
 import { NodeCreateService } from 'src/app/services/node-create.service';
 import { TreeDataService } from 'src/app/services/tree-data.service';
-
 @Component({
   selector: 'app-root-folder',
   templateUrl: './root-folder.component.html',
@@ -15,7 +14,7 @@ export class RootFolderComponent implements OnInit {
 
   constructor(
     private treeDataService: TreeDataService,
-    private nodeCreateService: NodeCreateService
+    private nodeCreateService: NodeCreateService,
   ) {}
 
   ngOnInit(): void {
@@ -23,8 +22,7 @@ export class RootFolderComponent implements OnInit {
   }
 
   addNewNode(preNode: Partial<NodeModel>, parentNode: NodeModel): void {
-    const newNode = this.treeDataService.getNode(preNode);
-    this.treeDataService.addChild(newNode, parentNode);
+    this.treeDataService.addNewNode(preNode, parentNode);
   }
 
   setActiveNodeId(nodeId: string): void {

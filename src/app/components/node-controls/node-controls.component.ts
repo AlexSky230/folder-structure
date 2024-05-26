@@ -18,7 +18,7 @@ export class NodeControlsComponent {
 
   constructor(
     private treeDataService: TreeDataService,
-    private nodeCreateService: NodeCreateService
+    private nodeCreateService: NodeCreateService,
   ) {}
 
   deleteNode(parentNode: NodeModel, nodeId: string): void {

@@ -8,16 +8,15 @@
     Add folder to root
   </button>
 
-  <app-create-node
-    [nodeId]="rootNode.id"
-    [isRoot]="true"
-    (create)="addNewNode($event, rootNode)"
-  ></app-create-node>
+  <div class="container-create-in-root">
+    <app-create-node
+      [nodeId]="rootNode.id"
+      [isRoot]="true"
+      (create)="addNewNode($event, rootNode)"
+    ></app-create-node>
+  </div>
 
   <ng-container *ngFor="let child of rootNode.children">
-    <app-folder
-      [parentNode]="rootNode"
-      [node]="child"
-    ></app-folder>
+    <app-folder [parentNode]="rootNode" [node]="child"></app-folder>
   </ng-container>
 </div>

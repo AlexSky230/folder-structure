@@ -1,9 +1,9 @@
 <div class="node">
   <div
     class="node-container"
+    tabindex="1"
     [ngClass]="{ 'node-container-child': parentNode.id !== 'root' }"
   >
-
     <div class="node-container-image">
       <img
         src="../../../assets/images/folder-open-regular.svg"
@@ -20,14 +20,15 @@
     ></app-node-controls>
   </div>
 
-  <app-create-node
-    [nodeId]="node.id"
-    (create)="addNewNode($event, node)"
-  >
+  <app-create-node [nodeId]="node.id" (create)="addNewNode($event, node)">
   </app-create-node>
 
   <div *ngIf="node.children?.length" class="node-children">
-    <div *ngFor="let child of node.children" class="node-children-child">
+    <div
+      *ngFor="let child of node.children"
+      class="node-children-child"
+      tabindex="3"
+    >
       <app-folder
         *ngIf="child.type === nodeTypes.Folder"
         [parentNode]="node"

@@ -18,7 +18,7 @@ export class FolderComponent {
 
   constructor(
     private treeDataService: TreeDataService,
-    private nodeCreateService: NodeCreateService
+    private nodeCreateService: NodeCreateService,
   ) {}
 
   get lastChildIndex() {
