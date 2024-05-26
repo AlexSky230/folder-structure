@@ -26,8 +26,6 @@ export class TreeDataService {
   }
 
   addNewNode(preNode: Partial<NodeModel>, parentNode: NodeModel): void {
-    console.log(preNode);
-
     if (!preNode?.name && !preNode?.type) {
       console.error('Name or Id not provided', preNode);
       return;
@@ -37,7 +35,7 @@ export class TreeDataService {
     const newNode = new NodeModel(type, name);
 
     if (!parentNode) {
-      console.log('no parent provided');
+      console.error('No parent provided');
       return;
     }
 
