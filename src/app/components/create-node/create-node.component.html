@@ -1,5 +1,5 @@
 <ng-container *ngIf="(activeNodeId$ | async) === nodeId">
-  <div *ngIf="!type.value" class="type-container">
+  <div *ngIf="!form.controls.type.value" class="type-container">
     <button mat-button color="primary" (click)="setType(nodeTypes.Folder)">
       Folder
     </button>
@@ -8,21 +8,30 @@
     </button>
   </div>
 
-  <form *ngIf="type.value" [formGroup]="form" class="action-container">
+  <form
+    *ngIf="form.controls.type.value"
+    [formGroup]="form"
+    class="action-container"
+  >
     <div class="action-container-image">
       <img
-        *ngIf="type.value === nodeTypes.Folder"
+        *ngIf="form.controls.type.value === nodeTypes.Folder"
         src="../../../assets/images/folder-open-regular.svg"
-        alt="Image of folder"
+        alt="Folder icon"
       />
       <img
-        *ngIf="type.value === nodeTypes.File"
+        *ngIf="form.controls.type.value === nodeTypes.File"
         src="../../../assets/images/file-regular.svg"
-        alt="Image of file"
+        alt="File icon"
       />
     </div>
 
-    <input class="action-container-input" type="text" formControlName="name" />
+    <input
+      [attr.aria-label]="form.controls.type.value"
+      class="action-container-input"
+      type="text"
+      formControlName="name"
+    />
 
     <button mat-button color="primary" (click)="createNode()">
       <mat-icon>add</mat-icon>

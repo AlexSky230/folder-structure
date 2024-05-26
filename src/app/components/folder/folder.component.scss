@@ -22,12 +22,6 @@
       }
     }
 
-    &:focus {
-      .node-container-controls {
-        display: initial;
-      }
-    }
-
     &:hover {
       span {
         color: #3f51b5;

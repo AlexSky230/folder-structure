@@ -11,21 +11,21 @@ import { NodeCreateService } from 'src/app/services/node-create.service';
 })
 export class CreateNodeComponent {
   @Input() set isRoot(isRoot: boolean) {
-    if (isRoot) {
-      this.type.patchValue(ENodeType.Folder);
-    }
+    this._isRoot = isRoot;
+    this.patchTypeForRoot();
   }
   @Input({ required: true }) nodeId: string;
   @Output() create = new EventEmitter<Partial<NodeModel>>();
 
   activeNodeId$ = this.nodeCreateService.activeNodeId$;
   nodeTypes = ENodeType;
-  type = new FormControl<ENodeType>(null, Validators.required);
 
   form = new FormGroup({
     name: new FormControl<string>('', Validators.required),
-    type: this.type,
+    type: new FormControl<ENodeType>(null, Validators.required),
   });
+
+  private _isRoot: boolean = false;
 
   constructor(private nodeCreateService: NodeCreateService) {}
 
@@ -40,10 +40,17 @@ export class CreateNodeComponent {
 
   close(): void {
     this.form.reset();
+    this.patchTypeForRoot();
     this.nodeCreateService.setActiveNodeId('');
   }
 
   setType(type: ENodeType): void {
-    this.type.patchValue(type);
+    this.form.controls.type.patchValue(type);
+  }
+
+  private patchTypeForRoot(): void {
+    if (this._isRoot) {
+      this.form.controls.type.patchValue(ENodeType.Folder);
+    }
   }
 }

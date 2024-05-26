@@ -1,4 +1,4 @@
-<div *ngIf="rootNode$ | async as rootNode" class="container">
+<section *ngIf="rootNode$ | async as rootNode" class="container">
   <button
     class="container-add-button"
     mat-flat-button
@@ -19,4 +19,4 @@
   <ng-container *ngFor="let child of rootNode.children">
     <app-folder [parentNode]="rootNode" [node]="child"></app-folder>
   </ng-container>
-</div>
+</section>

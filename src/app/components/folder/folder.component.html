@@ -1,7 +1,6 @@
 <div class="node">
   <div
     class="node-container"
-    tabindex="1"
     [ngClass]="{ 'node-container-child': parentNode.id !== 'root' }"
   >
     <div class="node-container-image">
@@ -27,7 +26,6 @@
     <div
       *ngFor="let child of node.children"
       class="node-children-child"
-      tabindex="3"
     >
       <app-folder
         *ngIf="child.type === nodeTypes.Folder"
